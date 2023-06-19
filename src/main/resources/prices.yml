@@ -1,0 +1,86 @@
+openapi: "3.0.0"
+info:
+  description: Api de precios para la prueba
+  version: 1.0.0
+  title: back-prices
+paths:
+  /prices:
+    post:
+      summary: List all prices by filter
+      operationId: getPricesByFilter
+      tags:
+        - prices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PricesListRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricesListResourceCollection'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    PricesListRequest:
+      type: object
+      properties:
+        brandId:
+          type: integer
+          format: int64
+        productId:
+          type: integer
+          format: int64
+        applicationDate:
+          type: string
+          format: date-time
+    PricesListResourceCollection:
+      type: array
+      items:
+        $ref: '#/definitions/PricesListResource'
+    PricesListResource:
+      type: object
+      properties:
+        brandId:
+          type: integer
+          format: int64
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        priceList:
+          type: integer
+          format: int64
+        productId:
+          type: integer
+          format: int64
+        priority:
+          type: integer
+          format: int64
+        price:
+          type: number
+          format: double
+        curr:
+          type: string
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

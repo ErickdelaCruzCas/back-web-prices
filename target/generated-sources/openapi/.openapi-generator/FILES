@@ -1,0 +1,7 @@
+src/main/java/com/baeldung/openapi/api/ApiUtil.java
+src/main/java/com/baeldung/openapi/api/PricesApi.java
+src/main/java/com/baeldung/openapi/api/PricesApiController.java
+src/main/java/com/baeldung/openapi/api/PricesApiDelegate.java
+src/main/java/com/baeldung/openapi/model/Error.java
+src/main/java/com/baeldung/openapi/model/PricesListRequest.java
+src/main/java/com/baeldung/openapi/model/PricesListResource.java
