@@ -5,14 +5,15 @@ import com.baeldung.openapi.model.PricesListResource;
 import com.server.prueba.backwebprices.domain.Brand;
 import com.server.prueba.backwebprices.domain.PricesList;
 import com.server.prueba.backwebprices.domain.PricesListFilter;
-import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
+/*
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-18T20:37:14+0200",
+    date = "2023-06-19T08:47:58+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.16.1 (Amazon.com Inc.)"
 )
+*/
 @Component
 public class PricesListMapperImpl implements PricesListMapper {
 
