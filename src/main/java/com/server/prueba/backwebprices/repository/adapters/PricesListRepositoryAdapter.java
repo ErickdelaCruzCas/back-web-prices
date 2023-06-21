@@ -2,6 +2,7 @@ package com.server.prueba.backwebprices.repository.adapters;
 
 import com.server.prueba.backwebprices.domain.PricesList;
 import com.server.prueba.backwebprices.domain.PricesListFilter;
+import com.server.prueba.backwebprices.exceptions.ResourceNotFoundException;
 import com.server.prueba.backwebprices.ports.out.PricesListRepositoryPort;
 import com.server.prueba.backwebprices.repository.PricesListMOJpaRepository;
 import com.server.prueba.backwebprices.repository.mappers.PricesListMOMapper;
@@ -30,6 +31,13 @@ public class PricesListRepositoryAdapter implements PricesListRepositoryPort {
                         ).stream()
                 .map(mapper::fromModel)
                 .collect(Collectors.toList());
+        }
+
+        @Override
+        public PricesList findPricesListById(Integer id) {
+                return mapper.fromModel(repository.findById(id)
+                        .orElseThrow(() -> new ResourceNotFoundException(
+                        "The price was not found", 404)));
         }
 
 }

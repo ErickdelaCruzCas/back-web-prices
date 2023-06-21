@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface PricesListServicePort {
     List<PricesList> findPricesListByFilter(PricesListFilter filter);
+
+    PricesList findPricesListById(Integer id);
 }

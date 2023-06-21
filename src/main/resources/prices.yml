@@ -4,6 +4,32 @@ info:
   version: 1.0.0
   title: back-prices
 paths:
+  /prices/{id}:
+    get:
+      summary: Get price by Id
+      operationId: getPriceById
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      tags:
+        - price
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricesListResource'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/ErrorResource'
   /prices:
     post:
       summary: List all prices by filter
@@ -27,7 +53,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResource'
 
 components:
   schemas:
@@ -73,7 +99,7 @@ components:
           format: double
         curr:
           type: string
-    Error:
+    ErrorResource:
       type: object
       required:
         - code

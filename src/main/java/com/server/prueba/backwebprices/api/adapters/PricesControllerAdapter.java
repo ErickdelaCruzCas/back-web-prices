@@ -1,6 +1,8 @@
 package com.server.prueba.backwebprices.api.adapters;
 
+import com.baeldung.openapi.api.PriceApi;
 import com.baeldung.openapi.api.PricesApi;
+import com.baeldung.openapi.api.PricesApiDelegate;
 import com.baeldung.openapi.model.PricesListRequest;
 import com.baeldung.openapi.model.PricesListResource;
 import com.server.prueba.backwebprices.api.mappers.PricesListMapper;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -28,10 +29,18 @@ public class PricesControllerAdapter implements PricesApi {
 
     @Override
     public ResponseEntity<List<PricesListResource>> getPricesByFilter(@Valid PricesListRequest pricesListRequest) {
-        PricesListFilter filter = pricesListMapper.getFilter(pricesListRequest);
+        var filter = pricesListMapper.getFilter(pricesListRequest);
         var response =
                 pricesListServicePort.findPricesListByFilter(filter);
         return ResponseEntity.ok(pricesListMapper.toPricesListResourceList(response));
     }
+
+    @Override
+    public ResponseEntity<PricesListResource> getPriceById(@Valid Integer id) {
+        var response =
+                pricesListServicePort.findPricesListById(id);
+        return ResponseEntity.ok(pricesListMapper.toResource(response));
+    }
+
 
 }

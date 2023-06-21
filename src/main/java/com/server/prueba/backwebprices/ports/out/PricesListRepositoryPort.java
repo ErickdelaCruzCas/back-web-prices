@@ -9,4 +9,6 @@ public interface PricesListRepositoryPort{
 
     List<PricesList> getPricesListFromFilter(PricesListFilter pricesListFilter);
 
+    PricesList findPricesListById(Integer id);
+
 }
