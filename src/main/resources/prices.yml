@@ -29,7 +29,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/ErrorResource'
+                $ref: '#/components/schemas/ErrorResource'
   /prices:
     post:
       summary: List all prices by filter
@@ -72,7 +72,7 @@ components:
     PricesListResourceCollection:
       type: array
       items:
-        $ref: '#/definitions/PricesListResource'
+        $ref: '#/components/schemas/PricesListResource'
     PricesListResource:
       type: object
       properties:
